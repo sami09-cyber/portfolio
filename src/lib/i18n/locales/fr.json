@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "hero": {
+    "welcome": "Bienvenue sur mon portfolio",
+    "iam": "Je suis",
+    "role": "Développeur Web & Designer UX",
+    "description": "Je crée des expériences web innovantes et futuristes qui combinent design intuitif et technologies de pointe.",
+    "cta": {
+      "projects": "Voir mes projets",
+      "contact": "Me contacter"
+    }
+  },
+  "about": {
+    "title": "À Propos de Moi",
+    "subtitle": "Découvrez mon parcours, mes compétences et mes expériences dans le développement web et le design.",
+    "whoami": {
+      "title": "Qui suis-je ?",
+      "p1": "Je suis un développeur web passionné par la création d'expériences numériques innovantes et intuitives. Avec plus de 5 ans d'expérience dans le domaine, je combine expertise technique et sensibilité design pour réaliser des projets web qui se démarquent.",
+      "p2": "Ma spécialité est le développement frontend avec React et Next.js, mais je maîtrise également les technologies backend et le design UI/UX. J'aime particulièrement explorer les nouvelles technologies comme WebGL et Three.js pour créer des expériences web immersives.",
+      "p3": "En dehors du code, je m'intéresse à l'art numérique, à la réalité virtuelle et à l'intelligence artificielle. Ces passions nourrissent ma créativité et m'aident à concevoir des solutions web toujours plus innovantes."
+    },
+    "skills": {
+      "title": "Mes Compétences"
+    },
+    "experience": {
+      "title": "Expérience",
+      "positions": {
+        "senior": {
+          "title": "Développeur Frontend Senior",
+          "company": "Entreprise XYZ",
+          "period": "2020 - Présent",
+          "description": "Développement d'applications web modernes avec React et Next.js. Implémentation de designs responsifs et d'animations avancées."
+        },
+        "developer": {
+          "title": "Développeur Web",
+          "company": "Agence ABC",
+          "period": "2018 - 2020",
+          "description": "Création de sites web et d'applications pour divers clients. Utilisation de technologies frontend et backend."
+        },
+        "designer": {
+          "title": "Designer UI/UX",
+          "company": "Studio Design",
+          "period": "2016 - 2018",
+          "description": "Conception d'interfaces utilisateur et d'expériences utilisateur pour applications web et mobiles."
+        }
+      }
+    },
+    "education": {
+      "title": "Formation",
+      "degrees": {
+        "master": {
+          "title": "Master en Développement Web",
+          "institution": "Université Technologique",
+          "period": "2014 - 2016"
+        },
+        "bachelor": {
+          "title": "Licence en Informatique",
+          "institution": "Université des Sciences",
+          "period": "2011 - 2014"
+        }
+      }
+    }
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Découvrez une sélection de mes projets récents, allant des applications web aux expériences 3D immersives.",
+    "categories": {
+      "all": "Tous",
+      "web": "Web",
+      "mobile": "Mobile",
+      "3d": "3D",
+      "game": "Jeux"
+    },
+    "details": "Détails",
+    "demo": "Démo",
+    "code": "Code"
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "subtitle": "Vous avez un projet en tête ou une question ? N'hésitez pas à me contacter. Je suis toujours ouvert à de nouvelles opportunités et collaborations.",
+    "form": {
+      "name": "Votre nom",
+      "email": "Votre email",
+      "message": "Votre message",
+      "send": "Envoyer le message"
+    },
+    "info": {
+      "title": "Informations de contact",
+      "email": "Email",
+      "phone": "Téléphone",
+      "address": "Adresse"
+    },
+    "chat": {
+      "title": "Discutez avec mon IA",
+      "subtitle": "Vous pouvez également discuter avec mon assistant IA pour obtenir des réponses rapides à vos questions.",
+      "start": "Démarrer une conversation"
+    }
+  },
+  "footer": {
+    "description": "Un portfolio moderne et futuriste mettant en avant mes compétences et projets dans le développement web et le design d'expérience utilisateur.",
+    "quickLinks": "Liens Rapides",
+    "socialMedia": "Réseaux Sociaux",
+    "rights": "Tous droits réservés.",
+    "madeWith": "Créé avec",
+    "using": "en utilisant Next.js et Tailwind CSS"
+  }
+}
+
