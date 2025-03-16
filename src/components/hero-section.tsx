@@ -1,42 +1,75 @@
 "use client"
 
-import { useRef } from "react"
+import {useState, useEffect, ComponentType} from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react"
-import { Canvas, useFrame } from "@react-three/fiber"
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei"
-import type * as THREE from "three"
+import dynamic from "next/dynamic"
 
-function AnimatedSphere() {
-    const meshRef = useRef<THREE.Mesh>(null)
 
-    useFrame(() => {
-        if (meshRef.current) {
-            meshRef.current.rotation.x += 0.01
-            meshRef.current.rotation.y += 0.01
-        }
-    })
+// Importation dynamique des composants 3D pour éviter les erreurs SSR
+const TechVisualization = dynamic(() => import("@/components/tech-visualization").then((module) => module.default as ComponentType<{}>),
+    {
+            ssr: false,
+            loading: () => (
+                <div className="w-full h-full flex items-center justify-center bg-black/90 rounded-lg">
+                    <div className="text-primary animate-pulse">Chargement de la visualisation 3D...</div>
+                </div>
+            )
+    }
+)
+
+
+// Composant pour les particules qui sera rendu uniquement côté client
+const FloatingParticles = () => {
+    const [particles, setParticles] = useState<
+        Array<{
+            id: number
+            top: string
+            left: string
+            animation: string
+            delay: string
+            opacity: number
+        }>
+    >([])
+
+    useEffect(() => {
+        // Générer les particules uniquement côté client
+        const newParticles = Array.from({ length: 20 }).map((_, i) => ({
+            id: i,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animation: `float ${3 + Math.random() * 7}s linear infinite`,
+            delay: `${Math.random() * 5}s`,
+            opacity: 0.3 + Math.random() * 0.7,
+        }))
+
+        setParticles(newParticles)
+    }, [])
 
     return (
-        <Sphere args={[1, 100, 200]} ref={meshRef}>
-            <MeshDistortMaterial color="#8a2be2" attach="material" distort={0.5} speed={2} />
-        </Sphere>
+        <div className="absolute inset-0 overflow-hidden opacity-30">
+            {particles.map((particle) => (
+                <div
+                    key={particle.id}
+                    className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                    style={{
+                        top: particle.top,
+                        left: particle.left,
+                        animation: particle.animation,
+                        animationDelay: particle.delay,
+                        opacity: particle.opacity,
+                    }}
+                />
+            ))}
+        </div>
     )
 }
 
 export function HeroSection() {
     return (
         <section id="hero" className="min-h-screen pt-20 relative overflow-hidden">
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50 z-10" />
-                <Canvas className="absolute inset-0">
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[10, 10, 5]} intensity={1} />
-                    <AnimatedSphere />
-                    <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-                </Canvas>
-            </div>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/50 to-background" />
 
             <div className="container mx-auto px-4 h-full flex flex-col justify-center">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -137,9 +170,20 @@ export function HeroSection() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="hidden lg:block h-[500px] relative"
+                        className="hidden lg:block h-[600px] relative"
                     >
-                        {/* This space is filled by the 3D canvas background */}
+                        <div className="w-full h-full relative bg-black/90 rounded-lg overflow-hidden">
+                            {/* Utilisation du composant importé dynamiquement */}
+                            <TechVisualization />
+
+                            {/* Effet de lueur au sol */}
+                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-64 h-32">
+                                <div className="w-full h-full bg-[#8a2be2] opacity-20 blur-3xl" />
+                            </div>
+
+                            {/* Particules flottantes rendues uniquement côté client */}
+                            <FloatingParticles />
+                        </div>
                     </motion.div>
                 </div>
             </div>

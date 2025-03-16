@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link"
-import { Github, Linkedin, Twitter, Heart } from "lucide-react"
+import { Github, Linkedin, Twitter, Heart, MapPin } from "lucide-react"
+import { Map3D } from "./map-3d"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
+    const address = "123 Rue de l'Innovation, 75000 Paris, France"
 
     return (
         <footer className="bg-muted py-12">
@@ -78,6 +82,15 @@ export function Footer() {
                             </a>
                         </div>
                     </div>
+                </div>
+
+                {/* Carte 3D */}
+                <div className="mt-8 mb-8 w-full overflow-hidden">
+                    <h3 className="font-semibold text-lg mb-4 flex items-center">
+                        <MapPin className="mr-2 h-5 w-5 text-primary" />
+                        Notre Adresse
+                    </h3>
+                    <Map3D address={address} className="border border-border rounded-lg w-full" />
                 </div>
 
                 <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">

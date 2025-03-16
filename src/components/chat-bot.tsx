@@ -31,7 +31,7 @@ export function ChatBot({ onClose }: ChatBotProps) {
     ])
     const [input, setInput] = useState("")
     const [isTyping, setIsTyping] = useState(false)
-    const messagesEndRef = useRef<HTMLDivElement>(null)
+    const messagesEndRef = useRef<HTMLDivElement>(null!)
 
     // Réponses prédéfinies pour la démonstration
     const botResponses = [

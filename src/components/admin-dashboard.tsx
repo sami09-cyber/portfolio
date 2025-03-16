@@ -222,9 +222,11 @@ export function AdminDashboard() {
                                         fill="#8884d8"
                                         dataKey="value"
                                     >
+                                        <>
                                         {deviceData.map((entry, index) => (
                                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                         ))}
+                                        </>
                                     </Pie>
                                     <Tooltip />
                                 </PieChart>
