@@ -128,21 +128,21 @@ export function ContactSection() {
                             </Card>
                         </div>
 
-                        <div className="mt-8">
-                            <h3 className="text-2xl font-bold mb-6">Discutez avec mon IA</h3>
-                            <p className="text-muted-foreground mb-4">
-                                Vous pouvez également discuter avec mon assistant IA pour obtenir des réponses rapides à vos questions.
-                            </p>
-                            <Button onClick={() => setIsChatOpen(true)} variant="outline" className="w-full">
-                                <MessageSquare size={16} className="mr-2" />
-                                Démarrer une conversation
-                            </Button>
-                        </div>
+                        {/*<div className="mt-8">*/}
+                        {/*    <h3 className="text-2xl font-bold mb-6">Discutez avec mon IA</h3>*/}
+                        {/*    <p className="text-muted-foreground mb-4">*/}
+                        {/*        Vous pouvez également discuter avec mon assistant IA pour obtenir des réponses rapides à vos questions.*/}
+                        {/*    </p>*/}
+                        {/*    <Button onClick={() => setIsChatOpen(true)} variant="outline" className="w-full">*/}
+                        {/*        <MessageSquare size={16} className="mr-2" />*/}
+                        {/*        Démarrer une conversation*/}
+                        {/*    </Button>*/}
+                        {/*</div>*/}
                     </motion.div>
                 </div>
             </div>
 
-            {isChatOpen && <ChatBot onClose={() => setIsChatOpen(false)} />}
+            {/*{isChatOpen && <ChatBot onClose={() => setIsChatOpen(false)} />}*/}
         </section>
     )
 }
