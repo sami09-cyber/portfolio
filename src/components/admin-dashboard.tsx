@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
@@ -17,8 +17,21 @@ import {
     PieChart,
     Pie,
     Cell,
+    Legend,
 } from "recharts"
-import { Eye, Users, Clock, Globe, Download, RefreshCw } from "lucide-react"
+import {
+    Eye,
+    Users,
+    Clock,
+    Globe,
+    Download,
+    RefreshCw,
+    Briefcase,
+    GraduationCap,
+    FolderKanban,
+    FileText,
+    Award,
+} from "lucide-react"
 
 // Données simulées pour les statistiques
 const visitData = [
@@ -46,8 +59,40 @@ const deviceData = [
 
 const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042"]
 
+// Données simulées pour les éléments du portfolio
+const portfolioElementsData = [
+    { name: "Projets", count: 8 },
+    { name: "Expériences", count: 3 },
+    { name: "Formations", count: 4 },
+    { name: "Compétences", count: 12 },
+    { name: "Articles", count: 5 },
+]
+
+// Données simulées pour les tendances de visites
+const visitTrendsData = [
+    { name: "Jan", visits: 400 },
+    { name: "Fév", visits: 300 },
+    { name: "Mar", visits: 500 },
+    { name: "Avr", visits: 280 },
+    { name: "Mai", visits: 590 },
+    { name: "Juin", visits: 320 },
+    { name: "Juil", visits: 350 },
+    { name: "Août", visits: 420 },
+    { name: "Sep", visits: 510 },
+    { name: "Oct", visits: 580 },
+    { name: "Nov", visits: 620 },
+    { name: "Déc", visits: 700 },
+]
+
+// Données simulées pour les sources de trafic
+const trafficSourcesData = [
+    { name: "Recherche", value: 45 },
+    { name: "Direct", value: 30 },
+    { name: "Réseaux sociaux", value: 15 },
+    { name: "Référents", value: 10 },
+]
+
 export function AdminDashboard() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [stats, setStats] = useState({
         totalVisits: 1280,
@@ -55,14 +100,6 @@ export function AdminDashboard() {
         avgTimeOnSite: "2m 45s",
         bounceRate: "32%",
     })
-
-    // Vérifier si l'utilisateur est connecté
-    useEffect(() => {
-        const loggedIn = localStorage.getItem("adminLoggedIn")
-        if (loggedIn === "true") {
-            setIsLoggedIn(true)
-        }
-    }, [])
 
     const refreshStats = () => {
         setIsLoading(true)
@@ -79,25 +116,100 @@ export function AdminDashboard() {
         }, 1000)
     }
 
-    if (!isLoggedIn) {
-        return (
-            <Card>
-                <CardHeader>
-                    <CardTitle>Accès restreint</CardTitle>
-                    <CardDescription>Veuillez vous connecter pour accéder au tableau de bord d'administration.</CardDescription>
-                </CardHeader>
-            </Card>
-        )
-    }
-
     return (
         <div className="space-y-8">
             <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold">Statistiques du site</h2>
+                <h2 className="text-2xl font-bold">Vue d'ensemble du portfolio</h2>
                 <Button onClick={refreshStats} disabled={isLoading}>
                     <RefreshCw className="mr-2 h-4 w-4" />
                     {isLoading ? "Actualisation..." : "Actualiser les données"}
                 </Button>
+            </div>
+
+            {/* Résumé des éléments du portfolio */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Projets</CardTitle>
+                        <FolderKanban className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{portfolioElementsData[0].count}</div>
+                        <p className="text-xs text-muted-foreground">+2 ce mois-ci</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Expériences</CardTitle>
+                        <Briefcase className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{portfolioElementsData[1].count}</div>
+                        <p className="text-xs text-muted-foreground">Dernière mise à jour il y a 2 semaines</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Formations</CardTitle>
+                        <GraduationCap className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{portfolioElementsData[2].count}</div>
+                        <p className="text-xs text-muted-foreground">Dernière mise à jour il y a 1 mois</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Compétences</CardTitle>
+                        <Award className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{portfolioElementsData[3].count}</div>
+                        <p className="text-xs text-muted-foreground">+3 ce mois-ci</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between pb-2">
+                        <CardTitle className="text-sm font-medium">Articles</CardTitle>
+                        <FileText className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{portfolioElementsData[4].count}</div>
+                        <p className="text-xs text-muted-foreground">+1 cette semaine</p>
+                    </CardContent>
+                </Card>
+            </div>
+
+            {/* Graphique des éléments du portfolio */}
+            <Card>
+                <CardHeader>
+                    <CardTitle>Répartition des éléments du portfolio</CardTitle>
+                    <CardDescription>Vue d'ensemble des différents types de contenu</CardDescription>
+                </CardHeader>
+                <CardContent className="h-[300px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                            data={portfolioElementsData}
+                            margin={{
+                                top: 20,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Bar dataKey="count" fill="#8884d8" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </CardContent>
+            </Card>
+
+            {/* Statistiques de visiteurs */}
+            <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold">Statistiques des visiteurs</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -143,19 +255,78 @@ export function AdminDashboard() {
                 </Card>
             </div>
 
-            <Tabs defaultValue="visits" className="w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Tendances des visites */}
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Tendances des visites</CardTitle>
+                        <CardDescription>Évolution des visites sur les 12 derniers mois</CardDescription>
+                    </CardHeader>
+                    <CardContent className="h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <LineChart
+                                data={visitTrendsData}
+                                margin={{
+                                    top: 20,
+                                    right: 30,
+                                    left: 20,
+                                    bottom: 5,
+                                }}
+                            >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                                <Line type="monotone" dataKey="visits" stroke="#8884d8" activeDot={{ r: 8 }} />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </CardContent>
+                </Card>
+
+                {/* Sources de trafic */}
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Sources de trafic</CardTitle>
+                        <CardDescription>Répartition des sources de trafic vers votre portfolio</CardDescription>
+                    </CardHeader>
+                    <CardContent className="h-[300px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                                <Pie
+                                    data={trafficSourcesData}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                                    outerRadius={100}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                >
+                                    {trafficSourcesData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                </Pie>
+                                <Tooltip />
+                                <Legend />
+                            </PieChart>
+                        </ResponsiveContainer>
+                    </CardContent>
+                </Card>
+            </div>
+
+            <Tabs defaultValue="visits" className="w-full overflow-hidden">
                 <TabsList className="grid w-full grid-cols-3 mb-8">
-                    <TabsTrigger value="visits">Visites</TabsTrigger>
+                    <TabsTrigger value="visits">Visites quotidiennes</TabsTrigger>
                     <TabsTrigger value="pages">Pages vues</TabsTrigger>
                     <TabsTrigger value="devices">Appareils</TabsTrigger>
                 </TabsList>
-                <TabsContent value="visits">
+                <TabsContent value="visits" className="overflow-hidden">
                     <Card>
                         <CardHeader>
                             <CardTitle>Visites par jour</CardTitle>
                             <CardDescription>Nombre de visites quotidiennes sur les 7 derniers jours</CardDescription>
                         </CardHeader>
-                        <CardContent className="h-[400px]">
+                        <CardContent className="h-[400px] overflow-hidden">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart
                                     data={visitData}
@@ -176,13 +347,13 @@ export function AdminDashboard() {
                         </CardContent>
                     </Card>
                 </TabsContent>
-                <TabsContent value="pages">
+                <TabsContent value="pages" className="overflow-hidden">
                     <Card>
                         <CardHeader>
                             <CardTitle>Pages les plus visitées</CardTitle>
                             <CardDescription>Nombre de vues par page sur le site</CardDescription>
                         </CardHeader>
-                        <CardContent className="h-[400px]">
+                        <CardContent className="h-[400px] overflow-hidden">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart
                                     data={pageViewsData}
@@ -203,13 +374,13 @@ export function AdminDashboard() {
                         </CardContent>
                     </Card>
                 </TabsContent>
-                <TabsContent value="devices">
+                <TabsContent value="devices" className="overflow-hidden">
                     <Card>
                         <CardHeader>
                             <CardTitle>Répartition par appareil</CardTitle>
                             <CardDescription>Types d'appareils utilisés pour accéder au site</CardDescription>
                         </CardHeader>
-                        <CardContent className="h-[400px]">
+                        <CardContent className="h-[400px] overflow-hidden">
                             <ResponsiveContainer width="100%" height="100%">
                                 <PieChart>
                                     <Pie
@@ -222,11 +393,9 @@ export function AdminDashboard() {
                                         fill="#8884d8"
                                         dataKey="value"
                                     >
-                                        <>
                                         {deviceData.map((entry, index) => (
                                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                         ))}
-                                        </>
                                     </Pie>
                                     <Tooltip />
                                 </PieChart>
@@ -238,7 +407,7 @@ export function AdminDashboard() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Actions administratives</CardTitle>
+                    <CardTitle>Actions rapides</CardTitle>
                     <CardDescription>Gérez votre site et exportez les données</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-4">
