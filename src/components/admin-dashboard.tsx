@@ -120,10 +120,16 @@ export function AdminDashboard() {
         <div className="space-y-8">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold">Vue d'ensemble du portfolio</h2>
-                <Button onClick={refreshStats} disabled={isLoading}>
-                    <RefreshCw className="mr-2 h-4 w-4" />
-                    {isLoading ? "Actualisation..." : "Actualiser les données"}
-                </Button>
+                <div className="flex flex-wrap gap-2">
+                    <Button>
+                        <Download className="mr-2 h-4 w-4" />
+                        Exporter les statistiques
+                    </Button>
+                    <Button onClick={refreshStats} disabled={isLoading}>
+                        <RefreshCw className="mr-2 h-4 w-4" />
+                        {isLoading ? "Actualisation..." : "Actualiser les données"}
+                    </Button>
+                </div>
             </div>
 
             {/* Résumé des éléments du portfolio */}
@@ -405,21 +411,21 @@ export function AdminDashboard() {
                 </TabsContent>
             </Tabs>
 
-            <Card>
-                <CardHeader>
-                    <CardTitle>Actions rapides</CardTitle>
-                    <CardDescription>Gérez votre site et exportez les données</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-wrap gap-4">
-                    <Button>
-                        <Download className="mr-2 h-4 w-4" />
-                        Exporter les statistiques
-                    </Button>
-                    <Button variant="outline">Mettre à jour le contenu</Button>
-                    <Button variant="outline">Gérer les utilisateurs</Button>
-                    <Button variant="outline">Paramètres du site</Button>
-                </CardContent>
-            </Card>
+            {/*<Card>*/}
+            {/*    <CardHeader>*/}
+            {/*        <CardTitle>Actions rapides</CardTitle>*/}
+            {/*        <CardDescription>Gérez votre site et exportez les données</CardDescription>*/}
+            {/*    </CardHeader>*/}
+            {/*    <CardContent className="flex flex-wrap gap-4">*/}
+            {/*        <Button>*/}
+            {/*            <Download className="mr-2 h-4 w-4" />*/}
+            {/*            Exporter les statistiques*/}
+            {/*        </Button>*/}
+            {/*        <Button variant="outline">Mettre à jour le contenu</Button>*/}
+            {/*        <Button variant="outline">Gérer les utilisateurs</Button>*/}
+            {/*        <Button variant="outline">Paramètres du site</Button>*/}
+            {/*    </CardContent>*/}
+            {/*</Card>*/}
         </div>
     )
 }

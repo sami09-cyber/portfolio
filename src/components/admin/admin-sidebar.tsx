@@ -30,12 +30,12 @@ export function AdminSidebar({ className }: AdminSidebarProps) {
     const menuItems = [
         { href: "/admin", label: "Dashboard", icon: BarChart2 },
         { href: "/admin/profile", label: "Profil", icon: User },
-        { href: "/admin/projects", label: "Projets", icon: FolderKanban },
+        { href: "/admin/project", label: "Projets", icon: FolderKanban },
         { href: "/admin/blog", label: "Blog", icon: FileText },
         { href: "/admin/experience", label: "Expérience", icon: Briefcase },
         { href: "/admin/education", label: "Formation", icon: GraduationCap },
-        { href: "/admin/skills", label: "Compétences", icon: Award },
-        { href: "/admin/settings", label: "Paramètres", icon: Settings },
+        { href: "/admin/skill", label: "Compétences", icon: Award },
+        { href: "/admin/setting", label: "Paramètres", icon: Settings },
     ]
 
     return (
@@ -59,12 +59,12 @@ export function AdminSidebar({ className }: AdminSidebarProps) {
                     className,
                 )}
             >
-                <div className="flex flex-col h-full">
-                    <div className="p-6 border-b border-border">
-                        <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
-                            Admin
-                        </h2>
-                    </div>
+                <div className="flex flex-col h-full mt-12">
+                    {/*<div className="p-6 border-b border-border mt-8">*/}
+                    {/*    <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">*/}
+                    {/*        Admin*/}
+                    {/*    </h2>*/}
+                    {/*</div>*/}
 
                     <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
                         {menuItems.map((item) => {

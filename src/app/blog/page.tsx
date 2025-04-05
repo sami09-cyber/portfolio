@@ -20,6 +20,8 @@
 
 import { BlogList } from "@/components/blog-list"
 import type { Metadata } from "next"
+import {Header} from "@/components/header";
+import {Footer} from "@/components/footer";
 
 export const metadata: Metadata = {
     title: "Blog | Portfolio",
@@ -29,7 +31,9 @@ export const metadata: Metadata = {
 export default function BlogPage() {
     return (
         <main>
+            <Header />
             <BlogList />
+            <Footer />
         </main>
     )
 }

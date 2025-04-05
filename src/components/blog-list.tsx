@@ -133,9 +133,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Filter, Search, Calendar, Clock, ArrowRight } from "lucide-react"
+import {Filter, Search, Calendar, Clock, ArrowRight, Rss} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import {motion} from "framer-motion";
 
 // Type pour les articles de blog
 interface BlogPost {
@@ -445,6 +446,7 @@ export function BlogList() {
           <h2 className="text-3xl font-bold mb-2 text-center">{getText("blog.title")}</h2>
           <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">{getText("blog.subtitle")}</p>
 
+
           <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
             <Tabs defaultValue="all" className="w-full md:w-auto" onValueChange={handleCategoryChange}>
               <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full md:w-auto">
@@ -454,6 +456,18 @@ export function BlogList() {
                 <TabsTrigger value="caseStudies">{getText("blog.categories.caseStudies")}</TabsTrigger>
               </TabsList>
             </Tabs>
+
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex justify-center"
+            >
+              <Button variant="outline" size="sm" className="flex items-center gap-2">
+                <Rss size={16} />
+                S'abonner au flux RSS
+              </Button>
+            </motion.div>
 
             <div className="relative w-full md:w-64">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />

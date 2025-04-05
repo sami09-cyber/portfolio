@@ -416,7 +416,7 @@ export function AboutSection() {
     //                         className="space-y-4"
     //                     >
     //                         <>
-    //                         {skills.map((skill) => (
+    //                         {skill.map((skill) => (
     //                             <motion.div key={skill.name} variants={item} className="space-y-2">
     //                                 <div className="flex justify-between">
     //                                     <span>{skill.name}</span>

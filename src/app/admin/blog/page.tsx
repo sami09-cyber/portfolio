@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AdminBlogPage() {
     return (
         <AdminLayout>
-            <h1 className="text-3xl font-bold mb-8">Gestion du Blog</h1>
+            <h1 className="text-3xl font-bold mt-8 mb-8">Gestion du Blog</h1>
             <Card>
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div>

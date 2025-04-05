@@ -2,6 +2,8 @@
 
 import type { ReactNode } from "react"
 import { AdminSidebar } from "./admin-sidebar"
+import {Footer} from "@/components/footer";
+import {Header} from "@/components/header";
 
 interface AdminLayoutProps {
     children: ReactNode
@@ -10,10 +12,12 @@ interface AdminLayoutProps {
 export function AdminLayout({ children }: AdminLayoutProps) {
     return (
         <div className="min-h-screen bg-background">
+            <Header />
             <AdminSidebar />
             <div className="md:ml-64 pt-16 md:pt-0 min-h-screen">
                 <main className="container mx-auto px-4 py-8">{children}</main>
             </div>
+            <Footer />
         </div>
     )
 }

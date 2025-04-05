@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     description: "Gestion des compétences",
 }
 
-export default function AdminSkillsPage() {
+export default function AdminSkillPage() {
     return (
         <AdminLayout>
-            <h1 className="text-3xl font-bold mb-8">Gestion des Compétences</h1>
+            <h1 className="text-3xl font-bold mt-8 mb-8">Gestion des Compétences</h1>
             <Card>
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div>

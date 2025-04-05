@@ -12,7 +12,7 @@ export default function AdminProjectPage() {
     return (
         <AuthGuard>
             <AdminLayout>
-                <h1 className="text-3xl font-bold mb-8">Gestion des Projets</h1>
+                <h1 className="text-3xl font-bold mt-8 mb-8">Gestion des Projets</h1>
                 <AdminProject />
             </AdminLayout>
         </AuthGuard>

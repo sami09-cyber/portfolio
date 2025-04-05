@@ -12,7 +12,7 @@ export default function AdminSettingsPage() {
     return (
         <AuthGuard>
             <AdminLayout>
-                <h1 className="text-3xl font-bold mb-8">Paramètres du Site</h1>
+                <h1 className="text-3xl font-bold mt-8 mb-8">Paramètres du Site</h1>
                 <AdminSetting />
             </AdminLayout>
         </AuthGuard>
